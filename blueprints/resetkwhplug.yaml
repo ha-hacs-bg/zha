@@ -26,3 +26,4 @@ blueprint:
         command_type: server
       service: zha.issue_zigbee_cluster_command
   mode: restart
+  
