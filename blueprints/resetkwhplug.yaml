@@ -1,0 +1,24 @@
+mode: restart
+variables:
+  ieee: "{{ (device_attr(select_power_plug_device, 'identifiers')|list).0.1 }}"
+sequence:
+  - data:
+      ieee: "{{ ieee }}"
+      endpoint_id: 1
+      cluster_id: 0
+      cluster_type: in
+      command: 0
+      args: []
+      command_type: server
+    action: zha.issue_zigbee_cluster_command
+    enabled: true
+alias: ZHA -  Tuya TS011F reset energy counter
+description: ""
+fields:
+  select_power_plug_device:
+    selector:
+      device:
+        integration: zha
+        model: TS011F
+    name: Select Tuya ZHA Power Plug
+    required: true
